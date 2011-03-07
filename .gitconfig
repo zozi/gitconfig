@@ -1,37 +1,57 @@
-[user]
-  name = Mark Turner
-  email = mark@amerine.net
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  ui = auto
+#
+# Project level settings are hightest priority ("local wins"), from <project dir>/.git/config
+# Then user level settings from this file (~/.gitconfig)
+# Then system level settings, from (on OSX using macports) /opt/local/etc/gitconfig
+#
+# To use this as your user level gitconfig:
+# ln -s /path/to/gitconfig ~/.gitconfig
+#
+# To use it as your system level gitconfig:
+# sudo ln -s /path/to/gitconfig /opt/local/etc/gitconfig
+#
+
 [core]
-  excludesfile = ~/.gitignore
-  pager = less -FRSX
-  editor = vim
-  autocrlf = input
-  safecrlf = true
-[alias]
-  c = commit -m
-  a = add
-  br = branch
-  df = diff
-  dfc = diff --cached
-  pl = pull
-  lol = log --graph --decorate --pretty=oneline --abbrev-commit
-  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-  ps = push
-  ls = ls-files
-  co = checkout
-  plre = pull --rebase
-  st = status -sb
-  out = log origin..HEAD
-  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
-[branch]
-  autosetupmerge = true
+  # ignorecase = false
+  autocrlf = false
+  editor = "vim"
+
 [push]
   default = matching
-[branch "master"]
-  remote = origin
-  merge = refs/heads/master
+
+[branch]
+  autosetupmerge = true
+                    
+[merge]
+  tool = opendiff
+
+[color]
+  ui = auto
+
+[color "branch"]
+  current = magenta reverse
+  local = magenta
+  remote = green
+
+[color "diff"]
+  meta = blue bold
+  frag = magenta bold
+  old = red bold
+  new = green bold          
+  whitespace = black
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[alias]
+  st = status
+  ci = commit
+  br = branch -v
+  co = checkout
+  df = diff --unified=50 --ignore-all-space  # note: --unified=<number of lines of context around diff>
+  ft = fetch
+  lg = log -p
+  ps = push origin HEAD
+  pl = pull
+  pr = pull --rebase
