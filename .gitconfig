@@ -1,5 +1,5 @@
 #
-# Project level settings are hightest priority ("local wins"), from <project dir>/.git/config
+# Project level settings are highest priority ("local wins"), from <project dir>/.git/config
 # Then user level settings from this file (~/.gitconfig)
 # Then system level settings, from (on OSX using macports) /opt/local/etc/gitconfig
 #
